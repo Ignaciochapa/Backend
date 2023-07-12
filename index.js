@@ -7,40 +7,58 @@ class ProductManager {
         return this.products
     }
 
-    // isInArray(array, producto) {
-    //     return array.some(prod => producto === prod)
-    // }
+    async addProduct(code, title, description, price, thumbnail, stock) {
+        const product = {code:code, title:title, description:description, price:price, thumbnail:thumbnail, stock:stock}
 
-    addProduct(title, description, price, thumbnail, stock) {
-        const product = {code:this.getId(), title:title, description:description, price:price, thumbnail:thumbnail, stock:stock}
-        
-        // Validar que todos los campos sean obligatorios
-    if (
-        !product.title ||
-        !product.description ||
-        !product.price ||
-        !product.stock
-      ) {
-        console.log("Todos los campos son obligatorios");
+        // Validar el tipo de dato de los campos
+    if (typeof product.title !== "string") {
+        console.log("El campo 'title' debe ser una cadena de caracteres");
+        return;
+      }
+  
+      if (typeof product.description !== "string") {
+        console.log("El campo 'description' debe ser una cadena de caracteres");
         return;
       }
 
+      if (typeof product.code !== "string") {
+        console.log("El campo 'description' debe ser una cadena de caracteres");
+        return;
+      }
+  
+      if (typeof product.price !== "number") {
+        console.log("El campo 'price' debe ser un número");
+        return;
+      }
+  
+      if (typeof product.thumbnail !== "string") {
+        console.log("El campo 'code' debe ser una cadena de caracteres");
+        return;
+      }
+  
+      if (typeof product.stock !== "number") {
+        console.log("El campo 'stock' debe ser un número");
+        return;
+      }
       // Validar que no se repita el código
     const codeAlreadyExists = this.products.some(
         (prod) => prod.code === product.code
       );
   
       if (codeAlreadyExists) {
-        console.log(`Ya existe un producto con el código ${product.code}`);
-        return;
+        console.log(`Ya existe un producto con el código ${product.code}`)
       }
-        //const isInArray = this.products.find((prod) => prod.code === product.code)
-        // if (this.products.includes(product)) {
-        //     console.log('el producto ya se encuentra en el array')
-        // } else {
-        //     this.products.push(product)
-        // }
+
+      // Agregar el producto al arreglo con un id autoincrementable
+    const newProduct = {
+        ...product,
+        id: this.products.length + 1,
+      };
+  
+      this.products.push(newProduct);
+      console.log(`Producto ${newProduct.id} - ${newProduct.title} agregado`);
     }
+    
 
     getId() {
         let idCero = 0
@@ -67,9 +85,8 @@ class ProductManager {
 
 const PM = new ProductManager();
 console.log(PM.getProducts());
-PM.addProduct('titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
-//console.log(PM.getProducts());
-PM.addProduct('titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
-PM.addProduct('titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
+PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
+console.log(PM.getProducts());
+PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
 console.log(PM.getProducts());
 console.log(PM.getProductById(3))
