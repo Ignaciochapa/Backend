@@ -58,28 +58,21 @@ class ProductManager {
       this.products.push(newProduct);
       console.log(`Producto ${newProduct.id} - ${newProduct.title} agregado`);
     }
-    
 
-    getId() {
-        let idCero = 0
-        this.products.forEach(product => {
-            idCero = product.code > idCero && product.code
-        })
-
-        return (idCero + 1)
-    }
-
-    getProductById(id) {
-        return new Promise((resolve, reject) => {
-            const item = this.products.find((product) => product.code === id)
-            if (item) {
-                resolve(item)
-            } else {
-                reject('No hay productos en el array con ese ID')
-            }
-        })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+    async getProductById(id) {
+      try {
+        const res = await new Promise((resolve, reject) => {
+          const item = this.products.find((product) => product.code === id);
+          if (item) {
+            resolve(item);
+          } else {
+            reject('No hay productos en el array con ese ID');
+          }
+        });
+        return console.log(res);
+      } catch (err) {
+        return console.log(err);
+      }
     }
 }
 
