@@ -1,6 +1,10 @@
+const fs = require("fs")
+
 class ProductManager {
     constructor() {
+        this.path = "productos.json"
         this.products = []
+        this.loadProducts()
     }
 
     getProducts() {
@@ -22,7 +26,7 @@ class ProductManager {
       }
 
       if (typeof product.code !== "string") {
-        console.log("El campo 'description' debe ser una cadena de caracteres");
+        console.log("El campo 'code' debe ser una cadena de caracteres");
         return;
       }
   
@@ -32,7 +36,7 @@ class ProductManager {
       }
   
       if (typeof product.thumbnail !== "string") {
-        console.log("El campo 'code' debe ser una cadena de caracteres");
+        console.log("El campo 'thumbnail' debe ser una cadena de caracteres");
         return;
       }
   
@@ -41,12 +45,12 @@ class ProductManager {
         return;
       }
       // Validar que no se repita el código
-    const codeAlreadyExists = this.products.some(
+    const codeExists = this.products.some(
         (prod) => prod.code === product.code
       );
   
-      if (codeAlreadyExists) {
-        console.log(`Ya existe un producto con el código ${product.code}`)
+      if (codeExists) {
+        console.log(`Ya existe un producto con el código ${product.code}`);
       }
 
       // Agregar el producto al arreglo con un id autoincrementable
@@ -56,23 +60,66 @@ class ProductManager {
       };
   
       this.products.push(newProduct);
+      this.saveProducts()
       console.log(`Producto ${newProduct.id} - ${newProduct.title} agregado`);
     }
 
     async getProductById(id) {
-      try {
-        const res = await new Promise((resolve, reject) => {
-          const item = this.products.find((product) => product.code === id);
-          if (item) {
-            resolve(item);
-          } else {
-            reject('No hay productos en el array con ese ID');
-          }
-        });
-        return console.log(res);
-      } catch (err) {
-        return console.log(err);
+      const product = this.products.find((product) => product.id === id);
+      if (product) {
+        return product;
       }
+    }
+
+    loadProducts() {
+      try {
+        const data = fs.readFileSync(this.path, "utf-8");
+        if (data) {
+          this.products = JSON.parse(data);
+        }
+      } catch (err) {
+        console.log(`Error al leer el archivo: ${err.message}`);
+      }
+    }
+
+    saveProducts() {
+      try {
+        fs.writeFileSync(this.path, JSON.stringify(this.products), "utf-8");
+      } catch (err) {
+        console.log(`Error al escribir archivo: ${err.message}`);
+      }
+    }
+
+    deleteProduct(id) {
+      const productIndex = this.products.findIndex(
+        (product) => product.id === id
+      );
+      if (productIndex === -1) {
+        console.log(`Id: ${id} no encontrado`);
+        return;
+      }
+  
+      this.products.splice(productIndex, 1);
+      this.saveProducts();
+      console.log(`Id: ${id} eliminado`);
+    }
+
+    async updateProduct(id, updatedProduct) {
+      const productIndex = this.products.findIndex(
+        (product) => product.id === id
+      );
+      if (productIndex === -1) {
+        console.log(`Producto ${id} no encontrado`);
+        return;
+      }
+  
+      this.products[productIndex] = {
+        ...updatedProduct,
+        id,
+      };
+  
+      this.saveProducts();
+      console.log(`Producto ${id} actualizado`);
     }
 }
 
@@ -80,6 +127,6 @@ const PM = new ProductManager();
 console.log(PM.getProducts());
 PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
 console.log(PM.getProducts());
-PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
+PM.addProduct('abc1234567','titulo prueba2','descripción prueba2', 200, 'imagen prueba2', 25);
 console.log(PM.getProducts());
-console.log(PM.getProductById(3))
+console.log(PM.getProductById(1))
