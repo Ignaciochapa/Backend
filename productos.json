@@ -1,1 +1,112 @@
-[]
+[
+    {
+      "id": 1,
+      "titulo": "Buzo Vert",
+      "categoria": "Buzos",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 5000,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/03/C52E3F00-64C6-45CE-A39E-06A84DA36E59-scaled.jpeg",
+      "descripcion": "Un buzo que va con vos",
+      "stock": 20
+    },
+    {
+      "id": 2,
+      "titulo": "Buzo Creme",
+      "categoria": "Buzos",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 6000,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/03/ABBDD36C-88E7-4285-87A6-906A4F65257A-scaled.jpeg",
+      "descripcion": "Imprescindible en tu placard",
+      "stock": 20
+    },
+    {
+      "id": 3,
+      "titulo": "Remera Basic White",
+      "categoria": "Remeras",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 3500,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/03/Productos-Abril-1-scaled-scaled.jpg",
+      "descripcion": "Basica que no te puede faltar",
+      "stock": 20
+    },
+    {
+      "id": 4,
+      "titulo": "Remera Dragon",
+      "categoria": "Remeras",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 4000,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/03/Productos-noviembre-2-5-scaled-scaled.jpg",
+      "descripcion": "Diseño pensado para vos",
+      "stock": 20
+    },
+    {
+      "id": 5,
+      "titulo": "Campera Black",
+      "categoria": "Camperas",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 9000,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/05/D892BBD1-3755-41E3-8E29-46269D1309CF-scaled.jpeg",
+      "descripcion": "La mejor campera para ésta temporada",
+      "stock": 20
+    },
+    {
+      "id": 6,
+      "titulo": "Campera Blue",
+      "categoria": "Camperas",
+      "material": "Algodón",
+      "talles": "S, M, L, XL",
+      "precio": 8000,
+      "imagen": "https://freres.ar/wp-content/uploads/2023/03/637A21CC-F2F9-4142-B16A-153BC80ECF97-scaled.jpeg",
+      "descripcion": "Una campera ideal para todos los dias",
+      "stock": 20
+    },
+    {
+        "id": 7,
+        "titulo": "Jean Regular Gris",
+        "categoria": "Pantalones",
+        "material": "Algodón",
+        "talles": "S, M, L, XL",
+        "precio": 10000,
+        "imagen": "https://freres.ar/wp-content/uploads/2023/03/Productos-Diciembre-3-1280x1280.jpg",
+        "descripcion": "Jean corte regular que no te puede faltar",
+        "stock": 20
+    },
+    {
+        "id": 8,
+        "titulo": "Jean Regular Bleu",
+        "categoria": "Pantalones",
+        "material": "Algodón",
+        "talles": "S, M, L, XL",
+        "precio": 12000,
+        "imagen": "https://freres.ar/wp-content/uploads/2023/03/C674F31B-C1A3-4A26-A906-42C512C59EAE-1280x1280.jpeg",
+        "descripcion": "Nuestro pantalón mas demandado",
+        "stock": 20
+    },
+    {
+        "id": 9,
+        "titulo": "Sneakers Noir",
+        "categoria": "Zapatillas",
+        "material": "Cuero",
+        "talles": "40, 41, 42",
+        "precio": 15000,
+        "imagen": "https://freres.ar/wp-content/uploads/2023/03/10-768x768.jpg",
+        "descripcion": "Zapatilla que no puede faltar en tu dia a dia",
+        "stock": 20
+    },
+    {
+        "id": 10,
+        "titulo": "Sneakers White",
+        "categoria": "Zapatillas",
+        "material": "Cuero",
+        "talles": "40, 41, 42",
+        "precio": 15000,
+        "imagen": "https://freres.ar/wp-content/uploads/2023/03/10-1-768x768.jpg",
+        "descripcion": "Diseño pensado para combinar con todo",
+        "stock": 20
+      }
+  ]

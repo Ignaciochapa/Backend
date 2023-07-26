@@ -1,6 +1,6 @@
-const fs = require("fs")
+import fs from "fs";
 
-class ProductManager {
+export default class ProductManager {
     constructor() {
         this.path = "productos.json"
         this.products = []
@@ -9,6 +9,13 @@ class ProductManager {
 
     getProducts() {
         return this.products
+    }
+
+    getProductById(id) {
+      const product = this.products.find((product) => product.id === id);
+      if (product) {
+        return product;
+      }
     }
 
     async addProduct(code, title, description, price, thumbnail, stock) {
@@ -64,13 +71,6 @@ class ProductManager {
       console.log(`Producto ${newProduct.id} - ${newProduct.title} agregado`);
     }
 
-    async getProductById(id) {
-      const product = this.products.find((product) => product.id === id);
-      if (product) {
-        return product;
-      }
-    }
-
     loadProducts() {
       try {
         const data = fs.readFileSync(this.path, "utf-8");
@@ -123,10 +123,10 @@ class ProductManager {
     }
 }
 
-const PM = new ProductManager();
-console.log(PM.getProducts());
-PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
-console.log(PM.getProducts());
-PM.addProduct('abc1234567','titulo prueba2','descripción prueba2', 200, 'imagen prueba2', 25);
-console.log(PM.getProducts());
-console.log(PM.getProductById(1))
+// const PM = new ProductManager();
+// console.log(PM.getProducts());
+// PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
+// console.log(PM.getProducts());
+// PM.addProduct('abc1234567','titulo prueba2','descripción prueba2', 200, 'imagen prueba2', 25);
+// console.log(PM.getProducts());
+// console.log(PM.getProductById(1))
