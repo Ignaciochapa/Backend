@@ -122,11 +122,3 @@ export default class ProductManager {
       console.log(`Producto ${id} actualizado`);
     }
 }
-
-// const PM = new ProductManager();
-// console.log(PM.getProducts());
-// PM.addProduct('abc1234','titulo prueba','descripción prueba', 200, 'imagen prueba', 25);
-// console.log(PM.getProducts());
-// PM.addProduct('abc1234567','titulo prueba2','descripción prueba2', 200, 'imagen prueba2', 25);
-// console.log(PM.getProducts());
-// console.log(PM.getProductById(1))
